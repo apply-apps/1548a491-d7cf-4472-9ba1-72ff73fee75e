@@ -15,7 +15,7 @@ const stories = [
         content: `Once upon a time there was a sweet little girl. Everyone who saw her liked her, but most of all her
         grandmother, who did not know what to give the child next. Once she gave her a little cap made of red velvet.
         Because it suited her so well, and she wanted to wear it all the time, she came to be known as Little Red
-        Riding Hood...`,
+        Riding Hood... It was such a lovely day when she left her mother to go visit her grandmother. Little did she know that looming in the forest was a big, bad wolf...`,
     },
     {
         id: '2',
@@ -23,7 +23,7 @@ const stories = [
         content: `Once upon a time there was a gentleman who married, for his second wife, the proudest and most haughty
         woman that was ever seen. She had, by a former husband, two daughters of her own, who were, indeed, exactly like her
         in all things. He had, likewise, by another wife, a young daughter, of rare goodness and sweetness of temper, which
-        she took from her mother, who was the best creature in the world...`,
+        she took from her mother, who was the best creature in the world... Despite her unfortunate circumstances, Cinderella remained kind and hopeful, dreaming of a life filled with beauty and love...`,
     },
 ];
 
@@ -52,14 +52,25 @@ function StoryScreen({ route, navigation }) {
 
     return (
         <SafeAreaView style={styles.container}>
+            <TouchableOpacity onPress={() => navigation.goBack()} style={styles.goBackContainer}>
+                <Text style={styles.goBack}>Go Back</Text>
+            </TouchableOpacity>
             <ScrollView contentContainerStyle={styles.scrollViewContent}>
-                <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <Text style={styles.goBack}>Go Back</Text>
-                </TouchableOpacity>
                 <Text style={styles.title}>{story.title}</Text>
                 <Text style={styles.content}>{story.content}</Text>
             </ScrollView>
         </SafeAreaView>
+    );
+}
+
+export default function App() {
+    return (
+        <NavigationContainer>
+            <Stack.Navigator screenOptions={{ headerShown: false }}>
+                <Stack.Screen name="Home" component={HomeScreen} />
+                <Stack.Screen name="Story" component={StoryScreen} />
+            </Stack.Navigator>
+        </NavigationContainer>
     );
 }
 
@@ -91,11 +102,16 @@ const styles = StyleSheet.create({
         color: '#fff',
     },
     scrollViewContent: {
-        paddingHorizontal: 10,
+        paddingHorizontal: 20,
+        paddingBottom: 20,
+    },
+    goBackContainer: {
+        paddingHorizontal: 20,
+        paddingTop: 10,
     },
     goBack: {
         color: '#ff6347',
-        marginBottom: 20,
+        marginBottom: 10,
         fontSize: 16,
     },
     content: {
@@ -104,14 +120,3 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
 });
-
-export default function App() {
-    return (
-        <NavigationContainer>
-            <Stack.Navigator screenOptions={{ headerShown: false }}>
-                <Stack.Screen name="Home" component={HomeScreen} />
-                <Stack.Screen name="Story" component={StoryScreen} />
-            </Stack.Navigator>
-        </NavigationContainer>
-    );
-}
