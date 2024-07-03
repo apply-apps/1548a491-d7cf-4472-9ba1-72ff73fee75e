@@ -15,7 +15,7 @@ const stories = [
         content: `Once upon a time there was a sweet little girl. Everyone who saw her liked her, but most of all her
         grandmother, who did not know what to give the child next. Once she gave her a little cap made of red velvet.
         Because it suited her so well, and she wanted to wear it all the time, she came to be known as Little Red
-        Riding Hood... It was such a lovely day when she left her mother to go visit her grandmother. Little did she know that looming in the forest was a big, bad wolf...`,
+        Riding Hood... It was such a lovely day when she left her mother to go visit her grandmother. Little did she know that looming in the forest was a big, bad wolf...`, 
     },
     {
         id: '2',
@@ -23,7 +23,7 @@ const stories = [
         content: `Once upon a time there was a gentleman who married, for his second wife, the proudest and most haughty
         woman that was ever seen. She had, by a former husband, two daughters of her own, who were, indeed, exactly like her
         in all things. He had, likewise, by another wife, a young daughter, of rare goodness and sweetness of temper, which
-        she took from her mother, who was the best creature in the world... Despite her unfortunate circumstances, Cinderella remained kind and hopeful, dreaming of a life filled with beauty and love...`,
+        she took from her mother, who was the best creature in the world... Despite her unfortunate circumstances, Cinderella remained kind and hopeful, dreaming of a life filled with beauty and love...`, 
     },
 ];
 
@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#1c1c1c',
         justifyContent: 'center',
+        marginTop: 40, // Margin from the top of the screen
     },
     title: {
         fontSize: 24,
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
     },
     list: {
         alignItems: 'stretch',
-        paddingHorizontal: 10,
+        paddingHorizontal: 10, // Padding to prevent content from touching the edges
     },
     storyItem: {
         padding: 20,
@@ -90,6 +91,10 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: '#fff',
     },
+    scrollViewContent: {
+        paddingHorizontal: 20,
+        paddingBottom: 20, // Ensure there's padding at the bottom
+    },
     goBackContainer: {
         paddingHorizontal: 20,
         paddingTop: 10,
@@ -98,10 +103,6 @@ const styles = StyleSheet.create({
         color: '#ff6347',
         marginBottom: 10,
         fontSize: 16,
-    },
-    scrollViewContent: {
-        paddingHorizontal: 20,
-        paddingBottom: 20,
     },
     content: {
         fontSize: 16,
