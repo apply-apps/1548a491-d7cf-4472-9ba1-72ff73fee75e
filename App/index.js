@@ -6,6 +6,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { SafeAreaView, StyleSheet, Text, FlatList, TouchableOpacity, ScrollView } from 'react-native';
 
+const Stack = createStackNavigator();
+
 const stories = [
     {
         id: '1',
@@ -23,21 +25,7 @@ const stories = [
         in all things. He had, likewise, by another wife, a young daughter, of rare goodness and sweetness of temper, which
         she took from her mother, who was the best creature in the world...`,
     },
-    // Add more stories as needed
 ];
-
-const Stack = createStackNavigator();
-
-export default function App() {
-    return (
-        <NavigationContainer>
-            <Stack.Navigator screenOptions={{ headerShown: false }}>
-                <Stack.Screen name="Home" component={HomeScreen} />
-                <Stack.Screen name="Story" component={StoryScreen} />
-            </Stack.Navigator>
-        </NavigationContainer>
-    );
-}
 
 function HomeScreen({ navigation }) {
     const renderStoryItem = ({ item }) => (
@@ -64,7 +52,7 @@ function StoryScreen({ route, navigation }) {
 
     return (
         <SafeAreaView style={styles.container}>
-            <ScrollView>
+            <ScrollView contentContainerStyle={styles.scrollViewContent}>
                 <TouchableOpacity onPress={() => navigation.goBack()}>
                     <Text style={styles.goBack}>Go Back</Text>
                 </TouchableOpacity>
@@ -79,6 +67,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#1c1c1c',
+        paddingHorizontal: 10,
     },
     title: {
         fontSize: 24,
@@ -88,17 +77,21 @@ const styles = StyleSheet.create({
         marginVertical: 20,
     },
     list: {
-        paddingHorizontal: 20,
+        alignItems: 'center',
     },
     storyItem: {
         padding: 20,
         marginVertical: 10,
         backgroundColor: '#333',
         borderRadius: 8,
+        width: '100%',
     },
     storyTitle: {
         fontSize: 18,
         color: '#fff',
+    },
+    scrollViewContent: {
+        paddingHorizontal: 10,
     },
     goBack: {
         color: '#ff6347',
@@ -111,3 +104,14 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
 });
+
+export default function App() {
+    return (
+        <NavigationContainer>
+            <Stack.Navigator screenOptions={{ headerShown: false }}>
+                <Stack.Screen name="Home" component={HomeScreen} />
+                <Stack.Screen name="Story" component={StoryScreen} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
+}
