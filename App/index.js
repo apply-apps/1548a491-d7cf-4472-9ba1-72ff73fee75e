@@ -6,6 +6,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { View, StyleSheet, Text, FlatList, TouchableOpacity, ScrollView } from 'react-native';
 
+const Stack = createStackNavigator();
+
 const stories = [
     {
         id: '1',
@@ -13,7 +15,7 @@ const stories = [
         content: `Once upon a time there was a sweet little girl. Everyone who saw her liked her, but most of all her
         grandmother, who did not know what to give the child next. Once she gave her a little cap made of red velvet.
         Because it suited her so well, and she wanted to wear it all the time, she came to be known as Little Red
-        Riding Hood... It was such a lovely day when she left her mother to go visit her grandmother. Little did she know that looming in the forest was a big, bad wolf...`,  // Shortened for brevity
+        Riding Hood... It was such a lovely day when she left her mother to go visit her grandmother. Little did she know that looming in the forest was a big, bad wolf...`,
     },
     {
         id: '2',
@@ -21,9 +23,8 @@ const stories = [
         content: `Once upon a time there was a gentleman who married, for his second wife, the proudest and most haughty
         woman that was ever seen. She had, by a former husband, two daughters of her own, who were, indeed, exactly like her
         in all things. He had, likewise, by another wife, a young daughter, of rare goodness and sweetness of temper, which
-        she took from her mother, who was the best creature in the world... Despite her unfortunate circumstances, Cinderella remained kind and hopeful, dreaming of a life filled with beauty and love...`,  // Shortened for brevity
+        she took from her mother, who was the best creature in the world... Despite her unfortunate circumstances, Cinderella remained kind and hopeful, dreaming of a life filled with beauty and love...`,
     },
-    // Add more stories as needed
 ];
 
 function HomeScreen({ navigation }) {
@@ -62,7 +63,52 @@ function StoryScreen({ route, navigation }) {
     );
 }
 
-const Stack = createStackNavigator();
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#1c1c1c',
+        justifyContent: 'center',
+    },
+    title: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: '#fff',
+        textAlign: 'center',
+        marginVertical: 20,
+    },
+    list: {
+        alignItems: 'stretch',
+        paddingHorizontal: 10,
+    },
+    storyItem: {
+        padding: 20,
+        marginVertical: 10,
+        backgroundColor: '#333',
+        borderRadius: 8,
+    },
+    storyTitle: {
+        fontSize: 18,
+        color: '#fff',
+    },
+    goBackContainer: {
+        paddingHorizontal: 20,
+        paddingTop: 10,
+    },
+    goBack: {
+        color: '#ff6347',
+        marginBottom: 10,
+        fontSize: 16,
+    },
+    scrollViewContent: {
+        paddingHorizontal: 20,
+        paddingBottom: 20,
+    },
+    content: {
+        fontSize: 16,
+        color: '#fff',
+        marginTop: 10,
+    },
+});
 
 export default function App() {
     return (
@@ -74,51 +120,3 @@ export default function App() {
         </NavigationContainer>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#1c1c1c',
-        paddingHorizontal: 10,
-        paddingTop: 10, // Add padding to the top
-    },
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        color: '#fff',
-        textAlign: 'center',
-        marginVertical: 20,
-    },
-    list: {
-        alignItems: 'center',
-    },
-    storyItem: {
-        padding: 20,
-        marginVertical: 10,
-        backgroundColor: '#333',
-        borderRadius: 8,
-        width: '100%',
-    },
-    storyTitle: {
-        fontSize: 18,
-        color: '#fff',
-    },
-    scrollViewContent: {
-        paddingHorizontal: 20,
-        paddingBottom: 20, // Ensure there's padding at the bottom
-    },
-    goBackContainer: {
-        paddingHorizontal: 20,
-        paddingTop: 10,
-    },
-    goBack: {
-        color: '#ff6347',
-        marginBottom: 10,
-        fontSize: 16,
-    },
-    content: {
-        fontSize: 16,
-        color: '#fff',
-        marginTop: 10,
-    },
-});
